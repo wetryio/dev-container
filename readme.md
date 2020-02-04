@@ -6,6 +6,18 @@
 * vscode
 * https://github.com/Microsoft/vscode-remote-release
 
+## Note for sceptics
+
+The very first run is pretty long
+
+* Docker pull
+* Docker run
+* Init mariadb
+* Install vscode extension
+* Db migration
+
+The second run is near instant if container is still existing (even down)
+
 ## How it works
 
 The very very basic is not explained here. The Microsoft tutorial is quite well made. Thanks Microsoft.
