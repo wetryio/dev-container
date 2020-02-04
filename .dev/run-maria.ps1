@@ -1,0 +1,1 @@
+docker run -p 3306:3306 --rm -e "MYSQL_ROOT_PASSWORD=root_password" -e "MYSQL_DATABASE=tododb" -e "MYSQL_USER=todoapplicationuser" -e "MYSQL_PASSWORD=!todoapplication" mariadb:latest

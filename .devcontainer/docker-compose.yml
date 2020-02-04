@@ -15,27 +15,23 @@ services:
     command: sleep infinity
 
   db:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mariadb:latest
     environment: 
-      - "SA_PASSWORD=yourStrong(!)Password"
-      - "ACCEPT_EULA=Y"
-    ports:
-      - 1433:1433
+      - "MYSQL_ROOT_PASSWORD=root_password"
+      - "MYSQL_DATABASE=tododb"
+      - "MYSQL_USER=todoapplicationuser"
+      - "MYSQL_PASSWORD=!todoapplication"
     volumes:
-      - DevContainer-db:/var/opt/mssql
+      - DevContainer-db:/var/lib/mysql
+    ports:
+      - 3306:3306
+    # command: >
+    #  mysql -u root --password=root_password 
+    #  && CREATE DATABASE `todo`;
+    #  && CREATE USER 'todoapplication' IDENTIFIED BY '!todoapplicaiton';
+    #  && GRANT ALL privileges ON `todo`.* TO 'todoapplication'@localhost;
+    #  && FLUSH PRIVILEGES;
 
 volumes:
   DevContainer-db:
     driver: local
-
-  # db:
-  #   image: postgres
-  #   restart: always
-  #   environment:
-  #     POSTGRES_PASSWORD: example
-
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080

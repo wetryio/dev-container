@@ -78,3 +78,8 @@ RUN dotnet tool install --global dotnet-ef
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
 ENV PATH="/root/.dotnet/tools:${PATH}"
+
+# install sql shell
+# https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-install-linux-quick.html
+# https://www.digitalocean.com/community/tutorials/comment-installer-mysql-sur-ubuntu-18-04-fr
+RUN apt-get update && apt-get install -y git curl libmcrypt-dev default-mysql-client
