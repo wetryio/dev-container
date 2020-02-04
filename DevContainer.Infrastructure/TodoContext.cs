@@ -6,7 +6,7 @@ namespace DevContainer.Infrastructure {
         public DbSet<Todo> Todos {get;set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder options) {
-            options.UseMySql("Server=localhost;Database=Todo;Uid=TodoApplication;Pwd=!TodoApplication;");
+            options.UseMySql("Server=db;Database=tododb;Uid=todoapplication;Pwd=!todoapplication;");
         }
     }
 }

@@ -7,9 +7,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ..:/workspace
-    # ports:
-    #   - 5000:5000
-    #   - 5001:5001
+    ports:
+      - 5000:5000
+      - 5001:5001
     depends_on:
             - db
     command: sleep infinity
@@ -18,13 +18,14 @@ services:
     image: mariadb:latest
     environment: 
       - "MYSQL_ROOT_PASSWORD=root_password"
-      - "MYSQL_DATABASE=tododb"
-      - "MYSQL_USER=todoapplicationuser"
-      - "MYSQL_PASSWORD=!todoapplication"
+      # - "MYSQL_DATABASE=tododb"
+      # - "MYSQL_USER=todoapplicationuser"
+      # - "MYSQL_PASSWORD=!todoapplication"
     volumes:
       - DevContainer-db:/var/lib/mysql
-    ports:
-      - 3306:3306
+      - "../.dev/initmaria:/docker-entrypoint-initdb.d"
+    # ports:
+    #   - 3306:3306
     # command: >
     #  mysql -u root --password=root_password 
     #  && CREATE DATABASE `todo`;

@@ -36,10 +36,11 @@
 	// "appPort": [],
 
 	// Uncomment the next line to run commands after the container is created - for example installing git.
-	"postCreateCommand": "dotnet restore && dotnet build",
+	"postCreateCommand": "dotnet restore && dotnet build && dotnet ef database update --project ./DevContainer.Infrastructure --startup-project ./DevContainer",
 
 	// Add the IDs of extensions you want installed when the container is created in the array below.
 	"extensions": [
-		"ms-vscode.csharp"
+		"ms-vscode.csharp",
+		"humao.rest-client"
 	]
 }

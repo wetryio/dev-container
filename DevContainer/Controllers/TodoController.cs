@@ -25,7 +25,7 @@ namespace DevContainer
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddTodo(AddTodoRequest request)
+        public async Task<IActionResult> AddTodo([FromBody]AddTodoRequest request)
         {
             try
             {
