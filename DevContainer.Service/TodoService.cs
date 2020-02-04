@@ -1,6 +1,7 @@
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DevContainer.Service
 {
@@ -8,6 +9,7 @@ namespace DevContainer.Service
     {
         Task<AddTodoResponse> Add(AddTodoRequest request);
         Task<GetTodoResponse> Get(GetTodoRequest request);
+        Task<GetAllTodoResponse> GetAll();
     }
 
     public class TodoService : ITodoService
@@ -39,9 +41,21 @@ namespace DevContainer.Service
 
         public async Task<GetTodoResponse> Get(GetTodoRequest request)
         {
-            var todo =await this.repository.Get(request.Id);
-            logger.LogInformation("%s", todo.Title);
+            var todo = await this.repository.Get(request.Id);
+            logger.LogInformation($"{todo.Title}");
             return mapper.Map<GetTodoResponse>(todo);
+        }
+
+        public async Task<GetAllTodoResponse> GetAll()
+        {
+            var todos = await this.repository.GetAll();
+            return new GetAllTodoResponse{
+                Todos = todos.Select(item => new GetAllTodoResponse.TodoItem{
+                    TodoId = item.TodoId,
+                    Title = item.Title,
+                    Description = item.Description
+                })
+            };
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DevContainer.Service {
@@ -5,5 +6,6 @@ namespace DevContainer.Service {
         Task<Todo> Add(Todo todo);
         Task<Todo> Delete(Todo todo);
         Task<Todo> Get(int id);
+        Task<IEnumerable<Todo>> GetAll();
     }
 }

@@ -19,6 +19,11 @@ namespace DevContainer
             this.logger = logger;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetTodo() {
+            return Ok(await this.todoService.GetAll());
+        }
+
         [HttpGet("{Id}")]
         public async Task<IActionResult> GetTodo([FromRoute]GetTodoRequest request) {
             return Ok(await this.todoService.Get(request));

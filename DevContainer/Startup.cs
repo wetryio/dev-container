@@ -1,18 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using DevContainer.Infrastructure;
 using DevContainer.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace DevContainer
 {
@@ -37,9 +30,13 @@ namespace DevContainer
             SetAutomapper(services);
         }
 
-        private void SetAutomapper(IServiceCollection services) {
-            services.AddSingleton(provider => 
-                new MapperConfiguration(cfg => cfg.CreateMap<Todo, GetTodoResponse>()).CreateMapper()
+        private void SetAutomapper(IServiceCollection services)
+        {
+            services.AddSingleton(provider =>
+                new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<Todo, GetTodoResponse>();
+                }).CreateMapper()
             );
         }
 

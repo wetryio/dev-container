@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DevContainer.Service;
@@ -30,6 +31,12 @@ namespace DevContainer.Infrastructure
         {
             var todo = context.Todos.Single(td => td.TodoId.Equals(id));
             return Task.FromResult(todo);
+        }
+
+        public Task<IEnumerable<Todo>> GetAll()
+        {
+            var todo = context.Todos;
+            return Task.FromResult(todo.ToList() as IEnumerable<Todo>);
         }
     }
 }
