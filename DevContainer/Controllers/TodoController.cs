@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using DevContainer.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using DevContainer.Service;
 
 namespace DevContainer
 {

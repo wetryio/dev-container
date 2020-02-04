@@ -49,8 +49,10 @@ namespace DevContainer.Service
         public async Task<GetAllTodoResponse> GetAll()
         {
             var todos = await this.repository.GetAll();
-            return new GetAllTodoResponse{
-                Todos = todos.Select(item => new GetAllTodoResponse.TodoItem{
+            return new GetAllTodoResponse
+            {
+                Todos = todos.Select(item => new GetAllTodoResponse.TodoItem
+                {
                     TodoId = item.TodoId,
                     Title = item.Title,
                     Description = item.Description

@@ -18,20 +18,9 @@ services:
     image: mariadb:latest
     environment: 
       - "MYSQL_ROOT_PASSWORD=root_password"
-      # - "MYSQL_DATABASE=tododb"
-      # - "MYSQL_USER=todoapplicationuser"
-      # - "MYSQL_PASSWORD=!todoapplication"
     volumes:
       - DevContainer-db:/var/lib/mysql
       - "../.dev/initmaria:/docker-entrypoint-initdb.d"
-    # ports:
-    #   - 3306:3306
-    # command: >
-    #  mysql -u root --password=root_password 
-    #  && CREATE DATABASE `todo`;
-    #  && CREATE USER 'todoapplication' IDENTIFIED BY '!todoapplicaiton';
-    #  && GRANT ALL privileges ON `todo`.* TO 'todoapplication'@localhost;
-    #  && FLUSH PRIVILEGES;
 
 volumes:
   DevContainer-db:
